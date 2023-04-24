@@ -4,6 +4,6 @@ type Role string
 
 const (
 	Tank    Role = "Tank"
-	Damage       = "Damage"
-	Support      = "Support"
+	Damage  Role = "Damage"
+	Support Role = "Support"
 )

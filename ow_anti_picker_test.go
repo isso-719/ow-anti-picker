@@ -50,14 +50,14 @@ func TestGetAntiPickMap(t *testing.T) {
 	}
 }
 
-func TestAntiPickMap_GetAntiPickMapToSortList(t *testing.T) {
+func TestAntiPickMap_GetAntiPickMapToSortByImportantList(t *testing.T) {
 	tests := []struct {
 		name string
 		apm  AntiPickMap
 		want AntiPickList
 	}{
 		{
-			name: "TestAntiPickMap_GetAntiPickMapToSortList",
+			name: "TestAntiPickMap_GetAntiPickMapToSortByImportantList",
 			apm: AntiPickMap{
 				owhero.Reaper:  1,
 				owhero.Bastion: 5,
@@ -76,7 +76,40 @@ func TestAntiPickMap_GetAntiPickMapToSortList(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := tt.apm.GetAntiPickMapToSortList(); !reflect.DeepEqual(got, tt.want) {
+			if got := tt.apm.GetAntiPickMapToSortByImportantList(); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("GetAntiPickMapToSortList() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func TestAntiPickMap_GetAntiPickMapToSortByImportantListWithHeroName(t *testing.T) {
+	tests := []struct {
+		name string
+		apm  AntiPickMap
+		want AntiPickListWithHeroName
+	}{
+		{
+			name: "TestAntiPickMap_GetAntiPickMapToSortByImportantList",
+			apm: AntiPickMap{
+				owhero.Reaper:  1,
+				owhero.Bastion: 5,
+				owhero.Ana:     4,
+				owhero.Junkrat: 2,
+				owhero.Winston: 3,
+			},
+			want: AntiPickListWithHeroName{
+				"Bastion",
+				"Ana",
+				"Winston",
+				"Junkrat",
+				"Reaper",
+			},
+		},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := tt.apm.GetAntiPickMapToSortByImportantListWithHeroName(); !reflect.DeepEqual(got, tt.want) {
 				t.Errorf("GetAntiPickMapToSortList() = %v, want %v", got, tt.want)
 			}
 		})
