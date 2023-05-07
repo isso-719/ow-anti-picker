@@ -56,7 +56,7 @@ var HeroList = []Hero{
 	{Brigitte, "Brigitte", Support},
 	{Cassidy, "Cassidy", Damage},
 	{DVa, "D.Va", Tank},
-	{Doomfist, "Doomfist", Damage},
+	{Doomfist, "Doomfist", Tank},
 	{Echo, "Echo", Damage},
 	{Genji, "Genji", Damage},
 	{Hanzo, "Hanzo", Damage},
